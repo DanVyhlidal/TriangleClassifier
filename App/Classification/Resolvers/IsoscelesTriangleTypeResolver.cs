@@ -2,9 +2,9 @@ using TriangleClassifier.App.Models;
 
 namespace TriangleClassifier.App.Classification.Classifiers
 {
-    public class IsoscelesTriangleClassifier : ITriangleClassifier
+    public class IsoscelesTriangleTypeResolver : ITriangleTypeResolver
     {
-        public TriangleClassifications Classification => TriangleClassifications.Isosceles;
+        public TriangleType Classification => TriangleType.Isosceles;
 
         public bool IsMatch(Triangle triangle)
         {

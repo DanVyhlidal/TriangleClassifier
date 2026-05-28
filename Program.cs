@@ -2,32 +2,14 @@ using TriangleClassifier.App;
 using TriangleClassifier.App.InputModes;
 using TriangleClassifier.App.Models;
 
-ITriangleInputMode inputMode;
-
-if (args.Length == 3)
-{
-    if (decimal.TryParse(args[0], out decimal a) &&
-        decimal.TryParse(args[1], out decimal b) &&
-        decimal.TryParse(args[2], out decimal c))
-    {
-        inputMode = new ConsoleArgumentInputMode(new SideLengths(a, b, c));
-    }
-    else
-    {
-        Console.WriteLine("Invalid input. Falling back to Interactive Input Mode");
-        inputMode = new InteractiveInputMode();
-    }
-}
-else
-{
-    if(args.Length != 0)
-        Console.WriteLine("Invalid number of input arguments. Falling back to Interactive Input Mode");
-    inputMode = new InteractiveInputMode();
-}
+IInputProvider<Triangle> inputMode = args.Length > 0 
+    ? new ArgumentInputProvider(args)
+    : new InteractiveInputProvider();
 
 var app = new TriangleClassificationApp(inputMode);
 app.Prepare();
 app.Run();
 
+// Awaiting enter press to not close right away the console window if this program runs through .exe file
 Console.WriteLine("Press enter to exit");
 Console.ReadLine();

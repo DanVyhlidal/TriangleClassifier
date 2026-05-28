@@ -2,9 +2,9 @@ using TriangleClassifier.App.Models;
 
 namespace TriangleClassifier.App.Classification.Classifiers
 {
-    public interface ITriangleClassifier
+    public interface ITriangleTypeResolver
     {
-        TriangleClassifications Classification { get; }
+        TriangleType Classification { get; }
         bool IsMatch(Triangle triangle);
     }
 }

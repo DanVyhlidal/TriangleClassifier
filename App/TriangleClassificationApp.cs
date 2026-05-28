@@ -5,18 +5,19 @@ using TriangleClassifier.App.Models;
 
 namespace TriangleClassifier.App
 {
-    public class TriangleClassificationApp(ITriangleInputMode inputMode)
+    public class TriangleClassificationApp(IInputProvider<Triangle> inputMode)
     {
-        private readonly ITriangleInputMode inputMode = inputMode;
-        private TriangleClassificator classificator;
+        private readonly IInputProvider<Triangle> triangleInputMode = inputMode;
+
+        private TriangleClassificator? classificator;
 
         public void Prepare()
         {
-            classificator = new TriangleClassificator(new ITriangleClassifier[]
+            classificator = new TriangleClassificator(new ITriangleTypeResolver[]
             {
-                new EquilateralTriangleClassifier(),
-                new IsoscelesTriangleClassifier(),
-                new ScaleneTriangleClassifier()
+                new EquilateralTriangleTypeResolver(),
+                new IsoscelesTriangleTypeResolver(),
+                new ScaleneTriangleTypeResolver()
             });
         }
         
@@ -26,10 +27,10 @@ namespace TriangleClassifier.App
             {
                 DisplayTitle();
         
-                Triangle retrievedTriangle = inputMode.GetTriangle();
-                TriangleClassifications result = classificator.Classify(retrievedTriangle);
+                Triangle retrievedTriangle = triangleInputMode.GetInput();
+                TriangleType triangleType = classificator!.Classify(retrievedTriangle);
     
-                Console.WriteLine($"Triangle with sides [{retrievedTriangle.Sides.A}, {retrievedTriangle.Sides.B}, {retrievedTriangle.Sides.C}] is classified as: [{result}]");
+                Console.WriteLine($"Triangle with sides [{retrievedTriangle.Sides.A}, {retrievedTriangle.Sides.B}, {retrievedTriangle.Sides.C}] is classified as: [{triangleType}]");
             }
             catch(Exception e)
             {

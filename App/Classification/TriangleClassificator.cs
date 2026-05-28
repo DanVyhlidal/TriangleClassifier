@@ -5,13 +5,13 @@ namespace TriangleClassifier.App.Classification
 {
     public class TriangleClassificator
     {
-        private readonly List<ITriangleClassifier> classifiers = new();
+        private readonly List<ITriangleTypeResolver> classifiers = new();
 
         public TriangleClassificator()
         {
         }
 
-        public TriangleClassificator(IEnumerable<ITriangleClassifier> classifiers)
+        public TriangleClassificator(IEnumerable<ITriangleTypeResolver> classifiers)
         {
             foreach (var classifier in classifiers)
             {
@@ -19,14 +19,14 @@ namespace TriangleClassifier.App.Classification
             }
         }
 
-        public void Register(ITriangleClassifier classifier)
+        public void Register(ITriangleTypeResolver classifier)
         {
             classifiers.Add(classifier);
         }
 
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidOperationException"></exception>
-        public TriangleClassifications Classify(Triangle triangle)
+        public TriangleType Classify(Triangle triangle)
         {
             if (triangle == null)
                 throw new ArgumentNullException(nameof(triangle));

@@ -3,11 +3,11 @@ using TriangleClassifier.App.Models;
 
 namespace TriangleClassifier.App.InputModes
 {
-    public class InteractiveInputMode : ITriangleInputMode
+    public class InteractiveInputProvider : IInputProvider<Triangle>
     {
-        public Triangle GetTriangle()
+        public Triangle GetInput()
         {
-            SideLengths sides = GetSidesOfTriangleInteractively();
+            SideLengths sides = GetAllTriangleSides();
 
             var triangleResult = Triangle.Create(sides);
             if (triangleResult.HasError)
@@ -16,7 +16,7 @@ namespace TriangleClassifier.App.InputModes
             return triangleResult.Value;
         }
 
-        private SideLengths GetSidesOfTriangleInteractively()
+        private SideLengths GetAllTriangleSides()
          {
              decimal[] sides = new decimal[3];
              for(int i = 0; i < sides.Length; i++)
@@ -31,7 +31,6 @@ namespace TriangleClassifier.App.InputModes
                      Console.WriteLine(sideLenghtResult.Error);
                      continue;
                  }
-
                  sides[i] = sideLenghtResult.Value;
              }
              

@@ -1,6 +1,6 @@
 namespace TriangleClassifier.App.Classification
 {
-    public enum TriangleClassifications
+    public enum TriangleType
     {
          Equilateral,
          Isosceles,
