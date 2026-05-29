@@ -1,13 +1,13 @@
 using TriangleClassifier.App.Classification;
 using TriangleClassifier.App.Classification.Classifiers;
-using TriangleClassifier.App.InputModes;
+using TriangleClassifier.App.Input;
 using TriangleClassifier.App.Models;
 
 namespace TriangleClassifier.App
 {
-    public class TriangleClassificationApp(IInputProvider<Triangle> inputMode)
+    public class TriangleClassificationApp(IInputProvider<Triangle> triangleInputProvider)
     {
-        private readonly IInputProvider<Triangle> triangleInputMode = inputMode;
+        private readonly IInputProvider<Triangle> triangleInputProvider = triangleInputProvider;
 
         private TriangleClassificator? classificator;
 
@@ -27,7 +27,7 @@ namespace TriangleClassifier.App
             {
                 DisplayTitle();
         
-                Triangle retrievedTriangle = triangleInputMode.GetInput();
+                Triangle retrievedTriangle = triangleInputProvider.GetInput();
                 TriangleType triangleType = classificator!.Classify(retrievedTriangle);
     
                 Console.WriteLine($"Triangle with sides [{retrievedTriangle.Sides.A}, {retrievedTriangle.Sides.B}, {retrievedTriangle.Sides.C}] is classified as: [{triangleType}]");

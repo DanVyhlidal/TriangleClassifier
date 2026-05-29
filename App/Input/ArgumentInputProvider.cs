@@ -1,7 +1,7 @@
 using TriangleClassifier.App.Base;
 using TriangleClassifier.App.Models;
 
-namespace TriangleClassifier.App.InputModes
+namespace TriangleClassifier.App.Input
 {
     public class ArgumentInputProvider : IInputProvider<Triangle>
     {
@@ -24,7 +24,7 @@ namespace TriangleClassifier.App.InputModes
         
         private Result<Triangle> ParseArgsToTriangle(string[] args)
         {
-            if(args.Length < 3 || args.Length > 3)
+            if(args.Length != 3)
                 return new Result<Triangle>("Invalid input. Please provide 3 decimal numbers as input");
 
             if (decimal.TryParse(args[0], out decimal a) &&

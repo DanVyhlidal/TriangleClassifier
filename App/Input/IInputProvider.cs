@@ -1,6 +1,6 @@
 using TriangleClassifier.App.Base;
 
-namespace TriangleClassifier.App.InputModes
+namespace TriangleClassifier.App.Input
 {
     public interface IInputProvider<T>
     {

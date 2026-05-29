@@ -4,7 +4,7 @@ namespace TriangleClassifier.App.Classification.Classifiers
 {
     public class EquilateralTriangleTypeResolver : ITriangleTypeResolver
     {
-        public TriangleType Classification => TriangleType.Equilateral;
+        public TriangleType Type => TriangleType.Equilateral;
 
         public bool IsMatch(Triangle triangle)
         {

@@ -1,12 +1,12 @@
 using TriangleClassifier.App;
-using TriangleClassifier.App.InputModes;
+using TriangleClassifier.App.Input;
 using TriangleClassifier.App.Models;
 
-IInputProvider<Triangle> inputMode = args.Length > 0 
+IInputProvider<Triangle> triangleInputProvider = args.Length > 0 
     ? new ArgumentInputProvider(args)
     : new InteractiveInputProvider();
 
-var app = new TriangleClassificationApp(inputMode);
+var app = new TriangleClassificationApp(triangleInputProvider);
 app.Prepare();
 app.Run();
 

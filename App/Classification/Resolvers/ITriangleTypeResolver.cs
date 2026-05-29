@@ -4,7 +4,7 @@ namespace TriangleClassifier.App.Classification.Classifiers
 {
     public interface ITriangleTypeResolver
     {
-        TriangleType Classification { get; }
+        TriangleType Type { get; }
         bool IsMatch(Triangle triangle);
     }
 }

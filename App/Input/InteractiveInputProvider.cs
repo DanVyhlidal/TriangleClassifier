@@ -1,7 +1,7 @@
 using TriangleClassifier.App.Base;
 using TriangleClassifier.App.Models;
 
-namespace TriangleClassifier.App.InputModes
+namespace TriangleClassifier.App.Input
 {
     public class InteractiveInputProvider : IInputProvider<Triangle>
     {
@@ -39,16 +39,16 @@ namespace TriangleClassifier.App.InputModes
 
          private Result<decimal> GetTriangleSide()
          {
-             string? inputLenghtAsString = Console.ReadLine();
+             string? retrievedSideLength = Console.ReadLine();
              
-             bool hasParsedSuccessfully = decimal.TryParse(inputLenghtAsString, out decimal inputLenght);
+             bool hasParsedSuccessfully = decimal.TryParse(retrievedSideLength, out decimal convertedSideLength);
              if(!hasParsedSuccessfully)
                  return new Result<decimal>("Invalid input. Please provide a decimal number only");
              
-             if(inputLenght <= 0)
+             if(convertedSideLength <= 0)
                  return new Result<decimal>("Invalid input. Please provided a positive decimal number only");
              
-             return new Result<decimal>(inputLenght);
+             return new Result<decimal>(convertedSideLength);
          }
     }
 }

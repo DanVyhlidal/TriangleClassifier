@@ -5,23 +5,21 @@ namespace TriangleClassifier.App.Classification
 {
     public class TriangleClassificator
     {
-        private readonly List<ITriangleTypeResolver> classifiers = new();
+        private readonly List<ITriangleTypeResolver> resolvers = new();
 
-        public TriangleClassificator()
-        {
-        }
+        public TriangleClassificator() { } 
 
-        public TriangleClassificator(IEnumerable<ITriangleTypeResolver> classifiers)
+        public TriangleClassificator(IEnumerable<ITriangleTypeResolver> resolvers)
         {
-            foreach (var classifier in classifiers)
+            foreach (var resolver in resolvers)
             {
-                Register(classifier);
+                Register(resolver);
             }
         }
 
-        public void Register(ITriangleTypeResolver classifier)
+        public void Register(ITriangleTypeResolver resolver)
         {
-            classifiers.Add(classifier);
+            resolvers.Add(resolver);
         }
 
         /// <exception cref="ArgumentNullException"></exception>
@@ -31,12 +29,10 @@ namespace TriangleClassifier.App.Classification
             if (triangle == null)
                 throw new ArgumentNullException(nameof(triangle));
 
-            foreach (var classifier in classifiers)
+            foreach (var resolver in resolvers)
             {
-                if (classifier.IsMatch(triangle))
-                {
-                    return classifier.Classification;
-                }
+                if (resolver.IsMatch(triangle))
+                    return resolver.Type;
             }
 
             throw new InvalidOperationException("The triangle could not be classified by any registered classifier.");
