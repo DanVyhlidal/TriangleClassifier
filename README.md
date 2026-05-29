@@ -18,13 +18,12 @@ dotnet run -- <a> <b> <c>
 dotnet run -- 5 5 8
 ```
 
+#### Error Handling
+If you attempt to run the application with command line arguments but provide invalid inputs (non-numeric values or the wrong number of arguments), the application will exit with an error message.
+
 ### 2. Interactive Mode (No Arguments)
 Run the application without any arguments to start interactive mode. The application will prompt you to enter the lengths of the three sides one by one.
 
 ```bash
 dotnet run
 ```
-
-## Error Handling
-
-If you attempt to run the application with command line arguments but provide invalid inputs (non-numeric values or the wrong number of arguments), the application will print a warning and automatically fall back to **Interactive Mode** so you can input the values correctly.
