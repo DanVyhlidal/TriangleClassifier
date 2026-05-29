@@ -1,4 +1,4 @@
-namespace TriangleClassifier.App.Models
+namespace TriangleClassifier.App.Core.Models
 {
     namespace Extensions
     {

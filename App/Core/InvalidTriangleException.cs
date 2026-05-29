@@ -1,4 +1,4 @@
-namespace TriangleClassifier.App.Base
+namespace TriangleClassifier.App.Core
 {
     public class InvalidTriangleException : Exception
     {

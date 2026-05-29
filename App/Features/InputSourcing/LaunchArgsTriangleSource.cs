@@ -1,13 +1,13 @@
-using TriangleClassifier.App.Base;
-using TriangleClassifier.App.Models;
+using TriangleClassifier.App.Core;
+using TriangleClassifier.App.Core.Models;
 
-namespace TriangleClassifier.App.Input
+namespace TriangleClassifier.App.Features.InputSourcing
 {
-    public class ArgumentInputProvider : IInputProvider<Triangle>
+    public class LaunchArgsTriangleSource : IInputSource<Triangle>
     {
         private readonly Result<Triangle> triangleResult;
 
-        public ArgumentInputProvider(string[] args)
+        public LaunchArgsTriangleSource(string[] args)
         {
             triangleResult = ParseArgsToTriangle(args);
         }

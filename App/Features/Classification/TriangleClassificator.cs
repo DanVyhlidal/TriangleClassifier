@@ -1,7 +1,7 @@
-using TriangleClassifier.App.Classification.Classifiers;
-using TriangleClassifier.App.Models;
+using TriangleClassifier.App.Core.Models;
+using TriangleClassifier.App.Features.Classification.Resolvers;
 
-namespace TriangleClassifier.App.Classification
+namespace TriangleClassifier.App.Features.Classification
 {
     public class TriangleClassificator
     {

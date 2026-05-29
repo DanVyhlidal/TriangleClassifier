@@ -1,9 +1,9 @@
-using TriangleClassifier.App.Base;
-using TriangleClassifier.App.Models;
+using TriangleClassifier.App.Core;
+using TriangleClassifier.App.Core.Models;
 
-namespace TriangleClassifier.App.Input
+namespace TriangleClassifier.App.Features.InputSourcing
 {
-    public class InteractiveInputProvider : IInputProvider<Triangle>
+    public class InteractiveTriangleSource : IInputSource<Triangle>
     {
         public Triangle GetInput()
         {

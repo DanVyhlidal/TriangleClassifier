@@ -1,13 +1,13 @@
 using TriangleClassifier.App;
-using TriangleClassifier.App.Input;
-using TriangleClassifier.App.Models;
+using TriangleClassifier.App.Core.Models;
+using TriangleClassifier.App.Features.InputSourcing;
 
 {
-    IInputProvider<Triangle> triangleInputProvider = args.Length > 0 
-        ? new ArgumentInputProvider(args)
-        : new InteractiveInputProvider();
+    IInputSource<Triangle> triangleInputSource = args.Length > 0 
+        ? new LaunchArgsTriangleSource(args)
+        : new InteractiveTriangleSource();
 
-    var app = new TriangleClassificationApp(triangleInputProvider);
+    var app = new TriangleClassificationApp(triangleInputSource);
     app.Prepare();
     app.Run();
 }

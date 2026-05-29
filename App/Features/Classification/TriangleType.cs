@@ -1,4 +1,4 @@
-namespace TriangleClassifier.App.Classification
+namespace TriangleClassifier.App.Features.Classification
 {
     public enum TriangleType
     {

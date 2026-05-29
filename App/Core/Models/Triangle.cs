@@ -1,7 +1,6 @@
-using TriangleClassifier.App.Base;
-using TriangleClassifier.App.Models.Extensions;
+using TriangleClassifier.App.Core.Models.Extensions;
 
-namespace TriangleClassifier.App.Models
+namespace TriangleClassifier.App.Core.Models
 {
     public class Triangle
     {

@@ -1,6 +1,6 @@
-using TriangleClassifier.App.Models;
+using TriangleClassifier.App.Core.Models;
 
-namespace TriangleClassifier.App.Classification.Classifiers
+namespace TriangleClassifier.App.Features.Classification.Resolvers
 {
     public class EquilateralTriangleTypeResolver : ITriangleTypeResolver
     {
